@@ -64,7 +64,13 @@ const App = () => {
     const [activeMenu, setActiveMenu] = useState(0)
 
     useEffect(() => {
+
         window.scroll({top: 0, left: 0, behavior: 'smooth'})
+        
+        document.addEventListener('load', () => {
+            document.querySelector('body').classList.add('loaded')
+        })
+
     }, [])
 
     return (
