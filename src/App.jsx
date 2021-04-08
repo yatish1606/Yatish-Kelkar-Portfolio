@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Instagram, Dribbble, GitHub, Linkedin } from 'react-feather'
-import me from './assets/images/yatish.jfif'
+import me from './assets/images/yatish.svg'
 import './app.css'
 import { ArrowRight } from 'react-feather'
 
@@ -22,11 +22,11 @@ const menuList = [
 const numberInfoList = [
     {
         value: '9.66',
-        description: 'Engineering GPA'
+        description: 'average engineering GPA'
     },
     {
         value: '10+',
-        description: 'Projects done, including hobby ones'
+        description: 'projects done, including hobby ones'
     },
 ]
 
@@ -52,7 +52,7 @@ const MenuItem = ({title, scrollTo, isActive, index, setActiveMenu}) => {
 const NumberInfoItem = ({value, description, index}) => {
     return (
         <div className="number-info-item" key={index}>
-            <p className="h4 primary">{value}</p>
+            <p className="h3 primary">{value}</p>
             <p className="t3 white">{description}</p>
         </div>
     )
@@ -118,6 +118,13 @@ const App = () => {
             
             </div>
 
+
+
+
+
+
+
+
             <div className="inner-container contact-container darkBG">
                 
                 <div className="contact-left" style={{height: 200}}>
@@ -128,14 +135,28 @@ const App = () => {
                         <p className="t3 grey margin-15">I'm active on email, chat and Instagram</p>
                     </div>
                     
-                    <a href="mailto:yatish1606@gmail.com"><p className="h6 primary link-projects">yatish1606@gmail.com <ArrowRight size={20} style={{marginLeft: 5}}/></p></a>
                 </div> 
 
-                <div className="contact-left">
+                <div className="contact-left" style={{height: 160, justifyContent: 'center'}}>
+                    <a href="mailto:yatish1606@gmail.com"><p className="h6 primary link-projects">yatish1606@gmail.com <ArrowRight size={20} style={{marginLeft: 5}}/></p></a>
+                    <a href="https://wa.me/919552503187"><p className="h6 primary link-projects">wa.me/919552503187<ArrowRight size={20} style={{marginLeft: 5}}/></p></a>
+                </div>
+
+                
+            </div>
+
+            <div className="inner-container contact-container darkBG" style={{paddingTop: 0}}>
+                
+                <div className="contact-left" style={{width: '40%'}}>
+                    
+                    <img src={me} alt="yatish" className="my-photo-big"/>
+                </div> 
+
+                <div className="contact-left" style={{width: '60%'}}>
                     
                     <div>
                         <p className="t00 white margin-20">I'm mostly involved in web development, product design, web design and full stack MERN projects</p>
-                        <p className="t3 grey margin-15" style={{marginTop: 30}}>I am currently in my third year of Information Technology Engineering at PVG's COET and will graduate in 2022. I am a quick learner, passionate about what I do and focused.</p>
+                        <p className="t3 grey margin-15" style={{marginTop: 30}}>I am currently in my third year of Information Technology Engineering at PVG's COET and will graduate in 2022. I am a quick learner, passionate about what I do and focused. <br/> <br/> I am actively involved in various extra curricular activites and am an active member of Google's Developer Students Club</p>
                     </div>
 
                     <div className="social-media" style={{marginTop: 40}}>
