@@ -5,6 +5,11 @@ import './app.css'
 import { ArrowRight } from 'react-feather'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 
+import comex from './assets/images/comex.svg'
+import itsa from './assets/images/itsa.svg'
+import dsc from './assets/images/dsc.svg'
+import diabeat from './assets/images/diabeat.svg'
+
 const menuList = [
     {
         title: 'Me',
@@ -15,8 +20,8 @@ const menuList = [
         scrollTo : 'projects-list'
     },
     {
-        title: 'Blogs',
-        scrollTo : 'landing'
+        title: 'About',
+        scrollTo : 'experience1'
     },
 ]
 
@@ -56,11 +61,36 @@ const workExperienceList = [
 ]
 
 const projectImagesList = [
-    'https://picsum.photos/380/400',
-    'https://picsum.photos/450/400',
-    'https://picsum.photos/350/300',
-    'https://picsum.photos/450/400',
-    'https://picsum.photos/400/300',
+    {
+        name: 'Google DSC 2020-21',
+        image:dsc,
+        link:'https://dscpvgcoet.github.io',
+        description:"Designed and developed the website for Google's Developer Students Clubs PVGCOET"
+    },
+    {
+        name : 'DiaBeat',
+        image:diabeat,
+        link:'https://dscpvgcoet.github.io',
+        description:"DiaBeat is an application for helping diabetic people for helping to assess, manage and control their diabetes through online consultation, lab booking and lab testing"
+    },
+    {
+        name : '',
+        image:comex,
+        link:'https://dscpvgcoet.github.io',
+        description:"Designed and developed the website for Google's Developer Students Clubs PVGCOET"
+    },
+    {
+        name : 'ITSA 2020-21',
+        image:itsa,
+        link:'https://dscpvgcoet.github.io',
+        description:"Designed and developed the website for Google's Developer Students Clubs PVGCOET"
+    },
+    {
+        name: 'Comex',
+        image:comex,
+        link:'https://dscpvgcoet.github.io',
+        description:"Designed the Comex application in which people will be able to exchange items in and around their localities for currency"
+    },
 ]
 
 const EducationalInfoList = [
@@ -87,6 +117,25 @@ const EducationalInfoList = [
         scoreInfo : 'percent',
         when : 'passed in May 2016',
         link : 'https://github.com'
+    },
+]
+
+const skillsInfoList = [
+    {
+        title: 'Design',
+        skillList : ['Product Design', 'UI UX Design', 'Wireframing', 'Prototyping']
+    },
+    {
+        title: 'Development',
+        skillList : ['Web Development', 'HTML5 & CSS3', 'ReactJS', 'Back-End Development', 'REST API', 'React Native Development', 'Node.js and Express']
+    },
+    {
+        title: 'Programming',
+        skillList : ['C/C++', 'Data Structures', 'Algorithms', 'Javascript and frameworks', 'Basic Python', 'SQL']
+    },
+    {
+        title: 'Tools',
+        skillList : ['Figma', 'MS Office', 'Visual Studio Code']
     },
 ]
 
@@ -153,6 +202,10 @@ const EducationItem = ({title, when, link, degree, score, scoreInfo, index}) => 
     )
 }
 
+
+
+
+
 const App = () => {
 
 
@@ -169,9 +222,14 @@ const App = () => {
     }, [])
 
     return (
+        
+        
         <div className="container">
 
 
+            
+            
+            
             <div className="inner-container landing-container lightBG">
                 
                 <div className="landing-left">
@@ -180,7 +238,7 @@ const App = () => {
                     
                     <div>
                         <p className="t2 grey margin-15">HEY THERE 👋🏼</p>
-                        <p className="h1 white">Carlos <br/> Mendoza. <br/> <div className="title-underline margin-20"></div> </p>
+                        <p className="h1 white">Yatish <br/> Kelkar. <br/> <div className="title-underline margin-20"></div> </p>
                     </div>
                     
                     <div className="social-media">
@@ -216,10 +274,6 @@ const App = () => {
 
 
 
-
-
-
-
             <div className="inner-container contact-container darkBG">
                 
                 <div className="contact-left" style={{height: 200}}>
@@ -239,6 +293,9 @@ const App = () => {
 
                 
             </div>
+
+
+
 
             <div className="inner-container contact-container darkBG space-below" style={{paddingTop: 0}}>
                 
@@ -264,17 +321,21 @@ const App = () => {
 
             </div>
 
+
+
             <div className="work-experience">
             {
                 workExperienceList.map(({title, where, icon, link}, index) => <WorkExperienceItem title={title} where={where} icon={icon} link={link} index={index} isActive={index===2}/>)
             }
             </div>
 
+
+
             <div className="projects-list-container lightBG">
                 <ResponsiveMasonry
                     columnsCountBreakPoints={{350: 1, 750: 2, 900: 2}}
                 >
-                    <Masonry gutter={150}>
+                    <Masonry gutter={80}>
                         
                         <div style={{margin: '50px 0 0 0'}}>
                             <p className="t2 grey">~ Work</p>
@@ -283,21 +344,29 @@ const App = () => {
                             <a href="https://github.com/yatish1606"><p className="h6 primary link-projects margin-15">Check out on GitHub<ArrowRight size={20} style={{marginLeft: 5}}/></p></a>
                         </div>
                         
-                        {projectImagesList.map((image, index) => (
-                            <img
-                                key={index}
-                                src={image}
-                                style={{width: "100%", display: "block"}}
-                                alt={`project-${index}`}
-                                className="project-image"
-                            />
+                        {projectImagesList.map((item, index) => (
+                            <div>
+                                <a href={item.link} target="_blank">
+                                    <img
+                                        key={index}
+                                        src={item.image}
+                                        style={{width: "100%", display: "block"}}
+                                        alt={`project-${index}`}
+                                        className="project-image"
+                                    />
+                                </a>
+                                <p className="t3 grey margin-50">{item.description}</p>
+                            </div>
                         ))}
 
                     </Masonry>
                 </ResponsiveMasonry>
             </div>
 
-            <div className="experience-container inner-container darkBG">
+
+
+
+            <div className="experience-container inner-container darkBG experience1-container">
                 
                 <div className="experience-container-inner">
                     
@@ -321,6 +390,42 @@ const App = () => {
 
 
             </div>
+
+            <div className="skills-container inner-container lightBG">
+                
+                <p className="t00 white ta-left">Skills and Competencies</p>
+                <div className="title-underline margin-10" style={{marginBottom: 80, width: 100}}></div>
+
+                <div className="skills-container-inner">
+                {
+                    skillsInfoList.map((item, index) => {
+                        return (
+                            <div style={{width: '25%'}} key={index}>
+                                <p className="white margin-20 t0">{item.title}</p>
+                                {
+                                    item.skillList.map(skill => <p className="grey t3 margin-15">{skill}</p>)
+                                }
+                            </div>
+                        )
+                    })
+                }
+                  
+                </div>
+                
+
+
+            </div>
+
+
+            <div className="skills-container inner-container darkBG" style={{alignItems: "center"}}>
+                
+                <p className="t2 white ta-center margin-20">Designed and developed by Yatish Kelkar</p>
+                
+
+
+            </div>
+
+
 
             
             
