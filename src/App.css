@@ -469,3 +469,10 @@ a:visited {
     width: 100%;
     justify-content:space-between;
 }
+
+.other-projects-container {
+    width: 100%;
+    padding: 70px 12%;
+    display: flex;
+    justify-content:space-between;
+}
