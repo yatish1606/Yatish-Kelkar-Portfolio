@@ -1,8 +1,7 @@
 import React, { useEffect, useState, Dispatch} from 'react'
-import { Instagram, Dribbble, GitHub, Linkedin, ArrowUpRight } from 'react-feather'
+import { Instagram, Dribbble, GitHub, Linkedin, ArrowUpRight, ArrowRight, Plus, Minus } from 'react-feather'
 import me from './assets/images/yatish.svg'
 import './app.css'
-import { ArrowRight } from 'react-feather'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import {menuList, numberInfoList, workExperienceList, projectImagesList, EducationalInfoList, skillsInfoList} from './info.js'
 
@@ -53,6 +52,14 @@ type EducationItemProps = {
     index: number
 }
 
+type OtherProjectsItemProps = {
+    name : string,
+    image: string,
+    link : string,
+    description: string,
+    index: number
+}
+
 
 
 const MenuItem = ({title, scrollTo, isActive, index, setActiveMenu} : MenuItemProps) => {
@@ -63,7 +70,7 @@ const MenuItem = ({title, scrollTo, isActive, index, setActiveMenu} : MenuItemPr
             key={index} 
             onClick={() => {
                 setActiveMenu(index)
-                document.querySelector(`.${scrollTo}-container`).scrollIntoView()
+                document.querySelector(`.${scrollTo}-container`)!.scrollIntoView()
             }}
         >
             
@@ -80,7 +87,7 @@ const NumberInfoItem = ({value, description, index} : NumberInfoItemProps) => {
     return (
         <div className="number-info-item" key={index}>
             <p className="h3 primary">{value}</p>
-            <p className="t3 white">{description}</p>
+            <p className="t2 white">{description}</p>
         </div>
     )
 } 
@@ -93,7 +100,7 @@ const WorkExperienceItem = ({icon, title, where, link, index, isActive} : WorkEx
             <div className="work-experience-icon">{icon}</div>
             <div>
                 <p className="t00 white margin-20">{title}.</p>
-                <a href={link}><p className="t3 white margin-15">@ {where}</p></a>
+                <a href={link}><p className="t4 white margin-15">@ {where}</p></a>
             </div>
         </div>
     )
@@ -126,6 +133,35 @@ const EducationItem = ({title, when, link, degree, score, scoreInfo, index} : Ed
     )
 }
 
+const OtherProjectsItem = ({name, link, description, index} : OtherProjectsItemProps) => {
+    
+    const [isOpen, setisOpen] = useState(false)
+    
+    return (
+        <>
+            <div className="other-projects" onClick={() => setisOpen(!isOpen)} key={index}>
+                <p className="white t1 margin-30">{name}</p>
+                {isOpen ? 
+                <Minus 
+                    size={20} 
+                    style={{margin: 20, textDecoration: 'underline', textUnderlineOffset: 10, cursor: 'pointer'}} 
+                    className="primary"
+                    onClick={() => setisOpen(!isOpen)}
+                /> : 
+                <Plus 
+                    size={20} 
+                    style={{margin: 20, textDecoration: 'underline', textUnderlineOffset: 10, cursor: 'pointer'}} 
+                    className="primary"
+                    onClick={() => setisOpen(!isOpen)}
+                />}
+            </div>
+            <div className={isOpen ? "other-projects-info" : "other-projects-info hide"} style={{marginBottom: isOpen ? 50 : 10, borderWidth: isOpen ? 0 : 1}}>
+                <p className="t2 grey margin-10">{description}</p>
+                <a href={link} target="_blank"><p className="h6 primary link-projects margin-15">open project</p></a>
+            </div>
+        </>
+    )
+}
 
 
 
@@ -140,7 +176,7 @@ const App = () => {
         window.scroll({top: 0, left: 0, behavior: 'smooth'})
         
         document.addEventListener('load', () => {
-            document.querySelector('body').classList.add('loaded')
+            document.querySelector('body')!.classList.add('loaded')
         })
 
     }, [])
@@ -166,10 +202,10 @@ const App = () => {
                     </div>
                     
                     <div className="social-media">
-                        <a href="https://instagram.com/yatish.kelkar"><Dribbble className="social-media-icon"/></a>
-                        <a href="https://instagram.com/yatish.kelkar"><Instagram className="social-media-icon"/></a>
-                        <a href="https://instagram.com/yatish.kelkar"><GitHub className="social-media-icon"/></a>
-                        <a href="https://instagram.com/yatish.kelkar"><Linkedin className="social-media-icon"/></a>
+                        <a href="https://dribbble.com/Yatish1606"><Dribbble className="social-media-icon"/></a>
+                        <a href="https://www.instagram.com/yatishkelkar/"><Instagram className="social-media-icon"/></a>
+                        <a href="https://github.com/yatish1606"><GitHub className="social-media-icon"/></a>
+                        <a href="https://www.linkedin.com/in/yatish-kelkar-850507190/"><Linkedin className="social-media-icon"/></a>
                     </div>
                 
                 </div>
@@ -188,7 +224,7 @@ const App = () => {
                         <p className="t3 grey margin-15">Currently completing my engineering at Pune University. Aspire to follow my passion of becoming a full stack professional</p>
                     </div>
 
-                    <p className="h6 primary link-projects">Check out my projects <ArrowRight size={20} style={{marginLeft: 5}}/></p>
+                    <p className="h6 primary link-projects" onClick={() => document.querySelector('.projects-list-container')!.scrollIntoView()}>Check out my projects <ArrowRight size={20} style={{marginLeft: 5}}/></p>
                     
 
                 </div>
@@ -259,7 +295,7 @@ const App = () => {
                 <ResponsiveMasonry
                     columnsCountBreakPoints={{350: 1, 750: 2, 900: 2}}
                 >
-                    <Masonry gutter={80}>
+                    <Masonry gutter="80px">
                         
                         <div style={{margin: '50px 0 0 0'}}>
                             <p className="t2 grey">~ Work</p>
@@ -268,7 +304,7 @@ const App = () => {
                             <a href="https://github.com/yatish1606"><p className="h6 primary link-projects margin-15">Check out on GitHub<ArrowRight size={20} style={{marginLeft: 5}}/></p></a>
                         </div>
                         
-                        {projectImagesList.map((item, index) => (
+                        {projectImagesList.slice(0,5).map((item, index) => (
                             <div>
                                 <a href={item.link} target="_blank">
                                     <img
@@ -288,9 +324,16 @@ const App = () => {
             </div>
 
             <div className="other-projects-container inner-container lightBG">
-                    <div style={{width: '30%'}}>
+                    <div style={{width: '40%'}}>
                         <p className="t00 white margin-20">Other Projects</p>
-                        <p className="t3 grey margin-15">Some other projects I have completed or been a part of</p>  
+                        <p className="t3 grey margin-15">Some other projects I have completed or been a part of</p> 
+                        <p className="t3 grey margin-15">Most projects except those completed under internships(bound under NDA's) are open source, and the source code is available <a href="https://github.com/yatish1606" target="_blank" className="primary" style={{color: '#efa649'}}>here</a> </p>  
+                    </div>
+
+                    <div style={{width: '60%', padding: '20px 0 20px 100px'}}>
+                    {
+                        projectImagesList.slice(5, projectImagesList.length).map((project, index) => <OtherProjectsItem name={project.name} description={project.description} link={project.link} index={index} image={project.image}/>)
+                    }
                     </div>
             </div>
 
@@ -301,7 +344,7 @@ const App = () => {
                 
                 <div className="experience-container-inner">
                     
-                    <p className="t00 white ta-left">Education</p>
+                    <p className="t00 white ta-left">Technical Experience</p>
                     <div className="title-underline margin-10" style={{marginBottom: 80}}></div>
 
                     {
@@ -311,7 +354,7 @@ const App = () => {
 
                 <div className="experience-container-inner" style={{marginLeft: '10%'}}>
                     
-                    <p className="t00 white ta-left">Internship Experience</p>
+                    <p className="t00 white ta-left">Education</p>
                     <div className="title-underline margin-10" style={{marginBottom: 80}}></div>
 
                     {

@@ -169,18 +169,18 @@ a:visited {
 }
 
 .t3 {
-    font-family: 'Poppins';
-    font-size: 13px;
+    font-family: 'Averta';
+    font-size: 15.5px;
     letter-spacing: 1.2px;
     margin: 0;
-    font-weight: 400;
-    line-height: 20px;
+    font-weight: 100;
+    line-height: 24px;
     padding: 0;
 }
 
 .t4 {
     font-family: 'Averta';
-    font-size: 10.5px;
+    font-size: 12.5px;
     letter-spacing: 0.8px;
     margin: 0;
     padding: 0;
@@ -475,4 +475,28 @@ a:visited {
     padding: 70px 12%;
     display: flex;
     justify-content:space-between;
+    transition: 0.3s ease-out;
+}
+
+.other-projects {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    cursor: pointer;
+}
+
+.other-projects-info {
+    width: 100%;
+    height: auto;
+    visibility: visible;
+    /* padding: 20px 0; */
+    transition: 0.3s ease;
+    overflow:hidden;
+    border-bottom: 1px solid #373A4D;
+}
+.other-projects-info.hide {
+    visibility: hidden;
+    height: 0;
+    transition: 0.3s ease;
 }
