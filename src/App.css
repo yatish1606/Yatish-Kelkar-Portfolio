@@ -523,10 +523,10 @@ a:visited {
         font-size: 26px;
     }
     .t00 {
-        font-size: 20px;
+        font-size: 24px;
     }
     .t0 {
-        font-size: 18px;
+        font-size: 20px;
     }
     .t1 {
         font-size: 17px;
@@ -539,11 +539,15 @@ a:visited {
     }
 
 
-
+    .inner-container {
+        overflow-x: hidden;
+        width: 100vw;
+    }
 
     .landing-container {
         flex-direction: column;
         padding: 50px 20px;
+        height: auto;
     }
     .landing-left, .landing-right {
         width: 100%;
@@ -608,5 +612,66 @@ a:visited {
     }
     .number-info-item p {
         text-align: left;
+    }
+    .space-below {
+        padding-bottom: 0;
+    }
+    .work-experience {
+        height : auto;
+        margin-top: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--darkBG);
+    }
+    .work-experience-box {
+        width : calc(100% - 80px);
+        height : auto;
+        margin: 0px auto 40px auto;
+        padding: 20px 20px 20px 40px;
+    }
+    .projects-list-container {
+        padding: 40px;
+        padding-top: 20px;
+        margin-top: 0px;
+    }
+    .other-projects-container, .experience-container , .skills-container{
+        flex-direction: column;
+        padding: 40px;
+    }
+    .other-projects-container div{
+        width: 100% !important;
+    }
+    .other-projects-container div:nth-child(2) {
+        padding-left: 0 !important;
+    }
+    .experience-container-inner {
+        width: 100%;
+    }
+    .experience-container-inner:nth-child(2) {
+        margin-left: 0 !important;
+    }
+    .experience-container-inner:nth-child(2) .t00 {
+        margin-top: 60px;
+    }
+    .experience-container-inner .title-underline, .skills-container .title-underline {
+        margin-bottom: 30px !important;
+    }
+    .skills-container-inner {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .skills-container-inner div {
+        width: 100% !important;
+    }
+    .skills-container-inner .t3 {
+        display: inline-block;
+        margin: 10px 20px 10px 0
+    }
+    .skills-container-inner .t3 ::after {
+        content: ','
+    }
+    .skills-container .t0 {
+        margin-top: 30px;
+        margin-bottom: 5px;
     }
 }

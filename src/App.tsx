@@ -4,6 +4,9 @@ import me from './assets/images/yatish.svg'
 import './app.css'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import {menuList, numberInfoList, workExperienceList, projectImagesList, EducationalInfoList, skillsInfoList} from './info.js'
+import { isMobile } from 'react-device-detect'
+import { title } from 'node:process'
+
 
 declare module "*.svg" {
     const value: any;
@@ -156,8 +159,9 @@ const OtherProjectsItem = ({name, link, description, index} : OtherProjectsItemP
                 />}
             </div>
             <div className={isOpen ? "other-projects-info" : "other-projects-info hide"} style={{marginBottom: isOpen ? 50 : 10, borderWidth: isOpen ? 0 : 1}}>
+                
                 <p className="t2 grey margin-10">{description}</p>
-                <a href={link} target="_blank"><p className="h6 primary link-projects margin-15">open project</p></a>
+                {link.length ? <a href={link} target="_blank" rel="noreferrer"><p className="h6 primary link-projects margin-15">open project</p></a> : null }
             </div>
         </>
     )
@@ -295,7 +299,7 @@ const App = () => {
                 <ResponsiveMasonry
                     columnsCountBreakPoints={{350: 1, 750: 2, 900: 2}}
                 >
-                    <Masonry gutter="80px">
+                    <Masonry gutter={isMobile ? "30px" : "80px"}>
                         
                         <div style={{margin: '50px 0 0 0'}}>
                             <p className="t2 grey">~ Work</p>
@@ -306,7 +310,7 @@ const App = () => {
                         
                         {projectImagesList.slice(0,5).map((item, index) => (
                             <div>
-                                <a href={item.link} target="_blank">
+                                <a href={item.link} target="_blank" rel="noreferrer">
                                     <img
                                         key={index}
                                         src={item.image}
@@ -315,7 +319,9 @@ const App = () => {
                                         className="project-image"
                                     />
                                 </a>
-                                <p className="t3 grey margin-50">{item.description}</p>
+                                {isMobile ? <p className="t0 white margin-10" style={{marginTop: 30}}>{item.name}</p> : null}
+                                <p className="t3 grey margin-10">{item.description}</p>
+                                {isMobile ? <p className="t2 primary margin-10 link-projects"><a href={item.link} target="_blank" rel="noreferrer">open project</a></p> : null}
                             </div>
                         ))}
 
@@ -327,7 +333,7 @@ const App = () => {
                     <div style={{width: '40%'}}>
                         <p className="t00 white margin-20">Other Projects</p>
                         <p className="t3 grey margin-15">Some other projects I have completed or been a part of</p> 
-                        <p className="t3 grey margin-15">Most projects except those completed under internships(bound under NDA's) are open source, and the source code is available <a href="https://github.com/yatish1606" target="_blank" className="primary" style={{color: '#efa649'}}>here</a> </p>  
+                        <p className="t3 grey margin-15">Most projects except those completed under internships(bound under NDA's) are open source, and the source code is available <a href="https://github.com/yatish1606" target="_blank" className="primary" style={{color: '#efa649'}} rel="noreferrer">here</a> </p>  
                     </div>
 
                     <div style={{width: '60%', padding: '20px 0 20px 100px'}}>
