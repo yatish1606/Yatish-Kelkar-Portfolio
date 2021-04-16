@@ -500,3 +500,113 @@ a:visited {
     height: 0;
     transition: 0.3s ease;
 }
+
+
+@media only screen and (max-width: 600px)  {
+
+
+    
+
+    .h0 {
+        font-size: 60px;
+    }
+    .h1 {
+        font-size: 50px;
+    }
+    .h5 {
+        font-size: 18px;
+    }
+    .h4 {
+        font-size: 22px;
+    }
+    .h3 {
+        font-size: 26px;
+    }
+    .t00 {
+        font-size: 20px;
+    }
+    .t0 {
+        font-size: 18px;
+    }
+    .t1 {
+        font-size: 17px;
+    }
+    .t2 {
+        font-size: 15.5px;
+    }
+    .t3 {
+        font-size: 14.5px;
+    }
+
+
+
+
+    .landing-container {
+        flex-direction: column;
+        padding: 50px 20px;
+    }
+    .landing-left, .landing-right {
+        width: 100%;
+    }
+    .landing-left {
+        align-items: center;
+    }
+    .landing-left .t2.grey.margin-15 {
+        display: none;
+    }
+    .landing-left .h1.white {
+        margin: 20px 0;
+        text-align: center;
+    }
+    .landing-left .title-underline {
+        width: 100%;
+    }
+    .social-media {
+        margin: 30px 0;
+    }
+    .menu {
+        display: none;
+    }
+    .landing-right .t2.grey {
+        display: none;
+    }
+    .landing-right .t00, .landing-right .t3, .landing-right .h6{
+        text-align: center;
+    }
+    .landing-right .link-projects {
+        margin: 5px auto;
+    }
+
+
+    .contact-container {
+        flex-direction: column;
+    }
+    .contact-left, .contact-right {
+        width: 100% !important;
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+    .contact-left p , .contact-right p{
+        text-align: center;
+    }
+    .contact-left a {
+        margin: 0 auto;
+    }
+    .my-photo-big {
+        width: 50vw;
+        height: 50vw;
+        margin: 0 auto;
+    }
+    .contact-left .social-media {
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    .number-info-item {
+        width : auto;
+        justify-content: flex-start;
+        margin: 10px 0;
+    }
+    .number-info-item p {
+        text-align: left;
+    }
+}
